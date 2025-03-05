@@ -1,0 +1,157 @@
+<style>
+    .header_container {
+        position: fixed;
+        display: flex;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .header_container.scrolled {
+        background-color: rgba(51, 190, 132, 0.95) !important;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .header_container.scrolled .navbar-brand h4,
+    .header_container.scrolled .navbar-brand h5 {
+        color: #333;
+    }
+
+    .header_container.scrolled .navbar-nav .nav-item .nav-link {
+        color: #333;
+    }
+
+    .navbar-nav .nav-item .nav-link {
+        color: #333;
+        position: relative;
+        padding: 10px 15px;
+        transition: all 0.3s ease;
+    }
+
+    .navbar-nav .nav-item .nav-link::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 50%;
+        background-color: #007bff;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    .navbar-nav .nav-item .nav-link:hover,
+    .navbar-nav .nav-item.active .nav-link {
+        color: #007bff;
+    }
+
+    .navbar-nav .nav-item .nav-link:hover::before,
+    .navbar-nav .nav-item.active .nav-link::before {
+        width: 100%;
+    }
+
+    .login_bt ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+    }
+
+    .login_bt ul li {
+        margin-left: 15px;
+    }
+
+    .login_bt ul li a {
+        color: #333;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        position: relative;
+        padding: 5px 5px;
+    }
+
+    .login_bt ul li a:hover {
+        color: #007bff;
+    }
+
+    .login_bt ul li a::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 50%;
+        background-color: #007bff;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    .login_bt ul li a:hover::before {
+        width: 100%;
+    }
+</style>
+
+<div class="header_container">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand d-flex align-items-center" href="index.php">
+                <div class="d-flex align-items-center">
+                    <img src="images/logo-jogja.png" alt="Logo Kota Yogyakarta" class="mr-3"
+                        style="height: 60px; width: auto;">
+                    <div class="government-title">
+                        <h4 class="mb-1 font-weight-bold">Pemerintah Kota Yogyakarta</h4>
+                        <h5 class="mb-0">Daerah Istimewa Yogyakarta</h5>
+                    </div>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.php">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="report.php">Report</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="visualization.php">Visualization</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.php">Contact</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <div class="login_bt">
+                        <ul>
+                            <li><a href="#">Sign Up</a></li>
+                            <li><a href="#">Login</a></li>
+                            <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </nav>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const header = document.querySelector('.header_container');
+
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }, { passive: true });
+    });
+</script>
